@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BBB Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .menu-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: bold;
+        }
+
+        .item-price {
+            color: #d2691e;
+        }
+
+        .quantity-selector {
+            width: 40px;
+        }
+
+        .add-to-cart {
+            display: inline-block;
+            width: 150px;
+            padding: 10px;
+            background-color: #333;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            background-color: #444;
+        }
+
+        .atc {
+            text-decoration: none;
+            color: white;
+        }
+
+        .bill-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .bill-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bill-item {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .total-bill {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .bill-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto 0;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .bill-button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BBB Coffees</h1>
+    </header>
+
+    <div class="menu-container">
+        <h2>Beverages Menu</h2>
+        <div class="menu-item">
+            <span class="item-name">Espresso</span>
+            <pre>   <span class="item-price">250/-</span>   <input class="quantity-selector" type="number" value="0" min="0">   <button class="add-to-cart" data-name="Espresso" data-price="250">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Cappuccino</span>
+            <pre>   <span class="item-price">350/-</span>   <input class="quantity-selector" type="number" value="0" min="0">   <button class="add-to-cart" data-name="Cappuccino" data-price="350">Add to Cart</button>
+            </pre>   
+            </div>
+        <div class="menu-item">
+            <span class="item-name">Frappe</span>   
+            <pre>   <span class="item-price">450/-</span>   <input class="quantity-selector" type="number" value="0" min="0">   <button class="add-to-cart" data-name="Frappe" data-price="450">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Blue Lagoon</span>
+            <pre>   <span class="item-price">300/-</span>   <input class="quantity-selector" type="number" value="0" min="0">   <button class="add-to-cart" data-name="Blue Lagoon" data-price="300">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Cranberry Cooler</span>
+            <pre>   <span class="item-price">450/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Cranberry Cooler" data-price="450">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Forrero Rocher Shake</span>
+            <pre>   <span class="item-price">550/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Forrero Rocher Shake" data-price="550">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Kitkat Shake</span>
+            <pre>   <span class="item-price">400/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Kitkat Shake" data-price="400">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Pina Colada</span>
+            <pre>   <span class="item-price">350/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Pina Colada" data-price="350">Add to Cart</button>
+            </pre>
+        </div><div class="menu-item">
+            <span class="item-name">Strawberry Slush</span>
+            <pre>   <span class="item-price">300/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Strawberry SLush" data-price="300">Add to Cart</button>
+            </pre>
+        </div>
+        <!-- Add more beverage items here -->
+
+        <h2>Pizza Menu</h2>
+        <div class="menu-item">
+            <span class="item-name">Margerita Pizza</span>
+            <pre>   <span class="item-price">450/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Margerita" data-price="450">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Pepperoni Pizza</span>
+            <pre>   <span class="item-price">550/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Pepperoni Pizza" data-price="550">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Farm Fresh</span>
+            <pre>   <span class="item-price">500/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Farm Fresh" data-price="500">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Vegiee Delight</span>
+            <pre>   <span class="item-price">550/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Vegiee Delight" data-price="550">Add to Cart</button>
+            </pre>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Paneer Tikka</span>
+            <pre>   <span class="item-price">500/-</span>   <input class="quantity-selector" type="number" value="0" min="0">    <button class="add-to-cart" data-name="Paneer Tikka" data-price="500">Add to Cart</button>
+            </pre>
+        </div>
+        <!-- Add more pizza items here -->
+
+        <div class="add-to-cart">
+            <a class="atc" href="javascript:void(0)" onclick="calculateBill()">Submit</a>
+        </div>
+    </div>
+    <div class="bill-container">
+        <div class="bill-header">Your Bill</div>
+        <!-- Bill items will be added here using JavaScript -->
+        <div class="total-bill" id="total-bill"></div>
+        <a class="bill-button" href="final_bill.html">View Final Bill</a>
+    </div>
+
+    <script>
+        const quantities = {};
+
+        // Get all "Add to Cart" buttons and quantity selectors
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const quantitySelectors = document.querySelectorAll('.quantity-selector');
+
+        // Add click event listener to each button
+        addToCartButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Get coffee name and price from data attributes
+                const coffeeName = button.getAttribute('data-name');
+                const coffeePrice = parseFloat(button.getAttribute('data-price'));
+
+                // Get the selected quantity
+                const selectedQuantity = parseInt(quantitySelectors[index].value);
+
+                // Store the selected quantity in the quantities array
+                quantities[coffeeName] = selectedQuantity;
+            });
+        });
+
+        // Function to calculate the total bill
+        function calculateBill() {
+            let totalBill = 0;
+
+            // Calculate the total bill based on selected quantities
+            for (const itemName in quantities) {
+                const itemPrice = parseFloat(document.querySelector(`[data-name="${itemName}"]`).getAttribute('data-price'));
+                totalBill += itemPrice * quantities[itemName];
+            }
+
+            // Display the bill in a new window or pop-up
+            const billWindow = window.open('', '_blank');
+            billWindow.document.write('<h2>Bill</h2>');
+
+            for (const itemName in quantities) {
+                const itemPrice = parseFloat(document.querySelector(`[data-name="${itemName}"]`).getAttribute('data-price'));
+                const selectedQuantity = quantities[itemName];
+                const subtotal = itemPrice * selectedQuantity;
+                billWindow.document.write(`<p>${itemName} x ${selectedQuantity}: ${subtotal}/-</p>`);
+            }
+
+            billWindow.document.write(`<p>Total Bill: ${totalBill}/-</p>`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BBB Coffee Shop History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('C:\Users\vishw\Downloads\coffee_shop1.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .history-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .carousel img {
+            width: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel-button {
+            cursor: pointer;
+        }
+
+        .quotes-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BBB Coffee Shop History</h1>
+    </header>
+
+    <div class="history-container">
+        <h2>Our Story</h2>
+        <p class="history-text">
+            Welcome to BBB Coffee Shop! We are proud to have been serving our community for over a decade. Our journey began in a small coffeehouse with a passion for bringing the finest coffee and delicious food to our customers.
+        </p>
+
+        <!-- Add more history content here -->
+
+        <div class="carousel">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.o1QJaTKJp51SiP89TwiVDwHaEK&pid=Api&P=0&h=180" alt="Coffee Shop Image 1">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.wVG4-Is4zPdMhZtysrub0QHaEK&pid=Api&P=0&h=180" alt="Coffee Shop Image 2">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.LxesTPb_V1byu-ZVFWnXrAHaE8&pid=Api&P=0&h=180" alt="Coffee Shop Image 3">
+        </div>
+        <div class="carousel-button" onclick="prevImage()">Previous</div>
+        <div class="carousel-button" onclick="nextImage()">Next</div>
+
+        <div class="quotes-container">
+            <h2>Inspiring Quotes</h2>
+            <div class="quote">"Life begins after coffee." - Unknown</div>
+            <div class="quote">"Espresso yourself!" - Unknown</div>
+            <div class="quote">"Happiness is a cup of coffee and a good book." - Unknown</div>
+            <!-- Add more quotes here -->
+        </div>
+    </div>
+
+    <script>
+        let imageIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function nextImage() {
+            images[imageIndex].style.transform = 'translateX(-100%)';
+            imageIndex = (imageIndex + 1) % images.length;
+            images[imageIndex].style.transform = 'translateX(0)';
+        }
+
+        function prevImage() {
+            images[imageIndex].style.transform = 'translateX(100%)';
+            imageIndex = (imageIndex - 1 + images.length) % images.length;
+            images[imageIndex].style.transform = 'translateX(0)';
+        }
+    </script>
+</body>
+</html>
