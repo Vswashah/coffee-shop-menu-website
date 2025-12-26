@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav-bar {
+  text-align: center;
+  background: #555;
+  padding: 10px;
+}
+
+.nav-bar a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+.menu-container {
+  max-width: 700px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.add-btn, .submit-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.bill {
+  display: none;
+  max-width: 700px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+}
