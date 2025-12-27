@@ -1,4 +1,4 @@
-const cart = {};
+/*const cart = {};
 
 document.querySelectorAll('.add-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -28,3 +28,22 @@ function calculateBill() {
   totalText.innerText = `Total: ₹${total}`;
   document.getElementById('bill').style.display = 'block';
 }
+*/
+fetch("http://localhost:5000/api/menu")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = "";
+
+    data.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "menu-item";
+      div.innerHTML = `
+        <h3>${item.name}</h3>
+        <p>$${item.price}</p>
+        <small>${item.category}</small>
+      `;
+      container.appendChild(div);
+    });
+  })
+  .catch(err => console.error(err));
