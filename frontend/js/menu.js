@@ -1,49 +1,75 @@
-/*const cart = {};
+let cart = [];
 
-document.querySelectorAll('.add-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.dataset.name;
-    const price = Number(btn.dataset.price);
-    const qty = btn.parentElement.querySelector('.qty').value;
-
-    cart[item] = { price, qty };
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("http://localhost:5000/api/menu")
+    .then(res => res.json())
+    .then(data => renderMenu(data))
+    .catch(err => console.error("Error fetching menu:", err));
 });
 
-function calculateBill() {
-  const billItems = document.getElementById('bill-items');
-  const totalText = document.getElementById('total');
+function renderMenu(menu) {
+  const container = document.getElementById("menu-container");
+  container.innerHTML = "";
 
-  billItems.innerHTML = '';
-  let total = 0;
+  menu.forEach(item => {
+    let qty = 0;
 
-  for (let item in cart) {
-    if (cart[item].qty > 0) {
-      const sub = cart[item].price * cart[item].qty;
-      total += sub;
-      billItems.innerHTML += `<p>${item} x ${cart[item].qty} = ₹${sub}</p>`;
-    }
+    const div = document.createElement("div");
+    div.className = "menu-item";
+
+    div.innerHTML = `
+      <span class="item-name">${item.name}</span>
+      <span class="item-price">$${item.price}</span>
+
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty">${qty}</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+
+      <button class="add-btn">Add</button>
+    `;
+
+    const qtySpan = div.querySelector(".qty");
+
+    div.querySelector(".plus").onclick = () => {
+      qty++;
+      qtySpan.textContent = qty;
+    };
+
+    div.querySelector(".minus").onclick = () => {
+      if (qty > 1) {
+        qty--;
+        qtySpan.textContent = qty;
+      }
+    };
+
+    div.querySelector(".add-btn").onclick = () => {
+  if (qty === 0) return; // 🚫 don't add zero items
+
+  const existing = cart.find(i => i.name === item.name);
+
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    cart.push({
+      name: item.name,
+      price: item.price,
+      qty
+    });
   }
 
-  totalText.innerText = `Total: ₹${total}`;
-  document.getElementById('bill').style.display = 'block';
-}
-*/
-fetch("http://localhost:5000/api/menu")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("menu-container");
-    container.innerHTML = "";
+  qty = 0; // reset to zero
+  qtySpan.textContent = qty;
+};
 
-    data.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "menu-item";
-      div.innerHTML = `
-        <h3>${item.name}</h3>
-        <p>$${item.price}</p>
-        <small>${item.category}</small>
-      `;
-      container.appendChild(div);
-    });
-  })
-  .catch(err => console.error(err));
+
+    container.appendChild(div);
+  });
+}
+
+
+function calculateBill() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "submit.html";
+}

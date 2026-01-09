@@ -4,40 +4,23 @@
   <meta charset="UTF-8">
   <title>Menu</title>
   <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
 
+</head>
+<body class="menu-page">
+
+ 
+<!-- Background -->
+  <div class="bg-image"></div>
 <header>
-  <h1>Menu</h1>
+   <h1>Our Menu</h1>
 </header>
 
-<main class="menu-container">
-<div id="menu-container"></div>
+<main>
+  <!-- Menu will be injected here -->
+  <div id="menu-container" class="menu-container"></div>
 
-  <div class="menu-item">
-    <span>Espresso</span>
-    <span>₹250</span>
-    <input type="number" min="0" value="0" class="qty">
-    <button class="add-btn" data-name="Espresso" data-price="250">Add</button>
-  </div>
-
-  <div class="menu-item">
-    <span>Cappuccino</span>
-    <span>₹350</span>
-    <input type="number" min="0" value="0" class="qty">
-    <button class="add-btn" data-name="Cappuccino" data-price="350">Add</button>
-  </div>
-
-  <button class="submit-btn" onclick="calculateBill()">Submit</button>
-
+  <button class="submit-btn" onclick="calculateBill()">Submit Order</button>
 </main>
-
-<section id="bill" class="bill">
-  <h2>Your Bill</h2>
-  <div id="bill-items"></div>
-  <p id="total"></p>
-</section>
-
 <script src="../js/menu.js"></script>
 </body>
 </html>

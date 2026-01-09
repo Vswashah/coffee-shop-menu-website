@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/api/menu", menuRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Coffee Shop API running ☕");
+  res.send("Coffee Shop API running ");
 });
 
 app.listen(5000, () => {

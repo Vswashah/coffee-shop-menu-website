@@ -1,58 +1,252 @@
-body {
+/* =====================
+   RESET
+===================== */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-header {
-  background: #333;
+html, body {
+  height: 100%;
+}
+
+/* =====================
+   BACKGROUND IMAGE
+===================== */
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background: url("../assets/coffee_interior.jpg") center/cover no-repeat;
+  z-index: -2;
+}
+
+/* subtle global overlay */
+.bg-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* =====================
+   HEADER (GLASS STYLE)
+===================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 18px 30px;
   color: white;
-  padding: 20px;
-  text-align: center;
+  z-index: 10;
+}
+
+/* Brand row */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
 
 .logo {
-  height: 60px;
+  height: 48px;
 }
 
+/* =====================
+   NAVIGATION
+===================== */
 .nav-bar {
-  text-align: center;
-  background: #555;
-  padding: 10px;
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
 }
 
 .nav-bar a {
-  color: white;
-  margin: 10px;
   text-decoration: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.6);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-.hero-image {
-  width: 100%;
-  height: auto;
-}
-
-.menu-container {
-  max-width: 700px;
-  margin: 20px auto;
+.nav-bar a:hover {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   HERO STORY CAROUSEL
+===================== */
+.hero-carousel {
+  height: calc(100vh - 160px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass-style story cards */
+.carousel-card {
+  position: absolute;
+  max-width: 700px;
+  padding: 35px 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* Active card animation */
+.carousel-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+.carousel-card h2 {
+  font-size: 34px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Text */
+.carousel-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .carousel-card {
+    margin: 0 20px;
+    padding: 25px;
+  }
+
+  .carousel-card h2 {
+    font-size: 24px;
+  }
+
+  .carousel-card p {
+    font-size: 16px;
+  }
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 768px) {
+  .brand {
+    flex-direction: column;
+  }
+
+  .welcome h2 {
+    font-size: 26px;
+  }
+
+  .nav-bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* Menu page heading */
+.menu-page h1,
+.menu-page h2 {
+  color: white;
+  text-align: center;
+  display: block;
+  width: 200px;
+  margin: 30px auto 0;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #6f4e37, #8b5e3c);
+  margin-bottom: 28px;
+  border: none;
+  border-radius: 25px;
+  
+}
+.menu-container {
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 2fr 1fr;
+  align-items: center;
+  padding: 14px 18px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
-.add-btn, .submit-btn {
+/* Add button (small) */
+.add-btn {
   background: #333;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 7px 14px;
+  border-radius: 6px;
   cursor: pointer;
 }
+
+/* Submit Order button (primary CTA) */
+.submit-btn {
+  display: block;
+  width: 200px;
+  margin: 30px auto 0;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #6f4e37, #8b5e3c);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #111;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 
 .bill {
   display: none;
